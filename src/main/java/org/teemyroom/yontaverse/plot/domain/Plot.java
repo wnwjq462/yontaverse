@@ -25,6 +25,6 @@ public class Plot extends BaseEntity {
     private VisitType visitType;
 
     @ElementCollection
-    @CollectionTable(name="plotMessage", joinColumns = @JoinColumn(name="plodId", referencedColumnName = "id"))
+    @CollectionTable(name="plotMessage", joinColumns = @JoinColumn(name="plotId", referencedColumnName = "id"))
     private List<Message> messages = new ArrayList<>();
 }
