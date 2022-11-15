@@ -38,6 +38,7 @@ public class AuthService {
     public AuthResponse modifyInfo(Long id, AuthModifyInfoRequest request) {
         Auth auth = authQueryService.findById(id);
         System.out.println();
+        System.out.println();
         auth.modifyInfo(request.getEmail(), request.getName(), passwordEncoder.encode(request.getPassword()));
         return new AuthResponse(auth);
     }
