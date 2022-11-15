@@ -6,11 +6,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: mq
-    password: secret
 
 security:
   enabled: false
