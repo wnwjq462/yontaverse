@@ -14,4 +14,6 @@ public class PlotQueryService extends BaseQueryService<Plot> {
         super(plotRepository);
         this.plotRepository = plotRepository;
     }
+
+    public Plot queryByVisitType()
 }

@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface ProblemRepository extends BaseRepository<Problem> {
     Optional<Problem> findById(Long id);
+    Optional<Problem> findByPlaceId(Long placeId);
 }

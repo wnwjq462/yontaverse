@@ -8,7 +8,9 @@ import org.teemyroom.yontaverse.auth.domain.AuthQueryService;
 import org.teemyroom.yontaverse.common.VisitType;
 import org.teemyroom.yontaverse.place.domain.Place;
 import org.teemyroom.yontaverse.place.domain.PlaceQueryService;
+import org.teemyroom.yontaverse.plot.application.PlotByVisitTypeQueryService;
 import org.teemyroom.yontaverse.plot.domain.Message;
+import org.teemyroom.yontaverse.plot.domain.PlotQueryService;
 import org.teemyroom.yontaverse.visitor.application.VisitService;
 import org.teemyroom.yontaverse.visitor.domain.Visitor;
 
@@ -20,6 +22,7 @@ public class PlaceEnterService {
     private final VisitService visitService;
     private final PlaceQueryService placeQueryService;
     private final AuthQueryService authQueryService;
+    private final PlotByVisitTypeQueryService plotByVisitTypeQueryService;
 
     @Transactional
     public PlaceEnterResponse enter(Long authId, Long placeId) {
@@ -62,6 +65,8 @@ public class PlaceEnterService {
         if (visitType == VisitType.UNVISITED) {
             visitService.visit(authId, placeId);
         }
+
+        List<Message> messages = plotByVisitTypeQueryService.query();
 
         return new PlaceEnterResponse(
                 placeId,

@@ -16,4 +16,8 @@ public class ProblemQueryService extends BaseQueryService<Problem> {
     public Problem findById(Long id) {
         return repository.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
+
+    public Problem findByPlaceId(Long placeId) {
+        return repository.findByPlaceId(placeId).orElseThrow(ResourceNotFoundException::new);
+    }
 }
