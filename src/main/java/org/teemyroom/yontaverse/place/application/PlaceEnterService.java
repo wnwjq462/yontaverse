@@ -60,7 +60,7 @@ public class PlaceEnterService {
                 throw new PreviousPlaceNotClearedException();
         }
 
-        System.out.println();
+        ();
 
         if (visitType == VisitType.UNVISITED) {
             visitService.visit(authId, placeId);

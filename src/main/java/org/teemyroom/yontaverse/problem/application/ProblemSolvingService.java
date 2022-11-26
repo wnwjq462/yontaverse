@@ -23,7 +23,7 @@ public class ProblemSolvingService {
     public ProblemSolvingResponse solve(Long authId, Long problemId, String input) {
         Problem problem = problemQueryService.findById(problemId);
 
-        System.out.println();
+        ();
         if (problem.match(input)) {
             Auth auth = authQueryService.findById(authId);
 

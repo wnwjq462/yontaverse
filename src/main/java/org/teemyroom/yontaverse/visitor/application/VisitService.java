@@ -19,7 +19,7 @@ public class VisitService {
 
     @Transactional
     public void visit(Long authId, Long placeId) {
-        System.out.println("");
+        ("");
         Auth auth = authQueryService.findById(authId);
         Place place = placeQueryService.findById(placeId);
         commandService.save(new Visitor(auth, place));

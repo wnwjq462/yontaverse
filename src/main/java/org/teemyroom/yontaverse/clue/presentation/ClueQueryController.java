@@ -23,7 +23,7 @@ public class ClueQueryController {
     public Response.Item<List<ClueResponse>> query(
             HttpServletRequest httpServletRequest
     ) {
-        System.out.println();
+        ();
         Long authId = jwtTokenProvider.getAuthId(jwtTokenProvider.extractToken(httpServletRequest));
 
         return new Response.Item<>(havingClueQueryService.query(authId));
