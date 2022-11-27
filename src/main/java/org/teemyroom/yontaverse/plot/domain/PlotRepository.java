@@ -5,4 +5,7 @@ import org.teemyroom.yontaverse.common.VisitType;
 
 import java.util.Optional;
 
-public interface PlotRepository extends BaseRepository<Plot> {}
+public interface PlotRepository extends BaseRepository<Plot> {
+
+    Optional<Plot> findByPlaceIdAndVisitType(Long placeId, VisitType visitType);
+}
