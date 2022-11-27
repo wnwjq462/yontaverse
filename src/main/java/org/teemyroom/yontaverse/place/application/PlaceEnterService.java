@@ -11,6 +11,7 @@ import org.teemyroom.yontaverse.place.domain.PlaceQueryService;
 import org.teemyroom.yontaverse.plot.application.PlotByVisitTypeQueryService;
 import org.teemyroom.yontaverse.plot.domain.Message;
 import org.teemyroom.yontaverse.plot.domain.PlotQueryService;
+import org.teemyroom.yontaverse.plot.domain.PlotRepository;
 import org.teemyroom.yontaverse.visitor.application.VisitService;
 import org.teemyroom.yontaverse.visitor.domain.Visitor;
 
@@ -34,7 +35,6 @@ public class PlaceEnterService {
         Optional<Visitor> targetVisitor =
             authVisitors.stream().filter(visitor -> Objects.equals(visitor.getPlace().getId(), placeId)).findAny();
 
-
         if (targetVisitor.isPresent()) {
             if (targetVisitor.get().getClear()) {
                 visitType = VisitType.SOLVED;
@@ -44,7 +44,6 @@ public class PlaceEnterService {
         } else {
             visitType = VisitType.UNVISITED;
         }
-
 
         if (place.getPreviousPlaceId() != null) {
             Optional<Visitor> previousVisitor =
@@ -60,18 +59,16 @@ public class PlaceEnterService {
                 throw new PreviousPlaceNotClearedException();
         }
 
-        ();
-
         if (visitType == VisitType.UNVISITED) {
             visitService.visit(authId, placeId);
         }
 
-        List<Message> messages = plotByVisitTypeQueryService.query();
+        List<Message> messages = plotByVisitTypeQueryService.MessageByPlaceIdAndVisitType(placeId, visitType);
 
         return new PlaceEnterResponse(
                 placeId,
                 visitType,
-                new ArrayList<Message>(),
+                messages,
                 place.getProblem()
         );
     }
