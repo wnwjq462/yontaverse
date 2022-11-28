@@ -14,8 +14,12 @@ public class AuthRegisterRequest {
     private String name;
     @NotBlank
     private String password;
+    @NotBlank
+    private String school;
+    @NotBlank
+    private String studentNumber;
 
     public Auth toEntity() {
-        return new Auth(email, name, password);
+        return new Auth(email, name, password, school, studentNumber);
     }
 }

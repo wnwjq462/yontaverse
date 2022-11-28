@@ -35,6 +35,9 @@ public class Auth extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private Boolean clear = false;
 
+    private String school;
+    private String studentNumber;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "auth", orphanRemoval = true)
     private List<Visitor> visitors = new ArrayList<>();
 
@@ -42,6 +45,14 @@ public class Auth extends BaseEntity implements UserDetails {
         this.email = email;
         this.name = name;
         this.password = password;
+    }
+
+    public Auth(String email, String name, String password, String school, String studentNumber) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.school = school;
+        this.studentNumber = studentNumber;
     }
 
     public void modifyInfo(String email, String name, String password) {
