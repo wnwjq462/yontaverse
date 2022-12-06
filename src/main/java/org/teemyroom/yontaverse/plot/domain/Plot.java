@@ -22,6 +22,7 @@ public class Plot extends BaseEntity {
     private Long placeId;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private VisitType visitType;
 
     @ElementCollection

@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Message {
-    private Long indexNumber;
-    private String description;
-    private String imagePath;
+    public Long indexNumber;
+    public String description;
+    public String imagePath;
 }
